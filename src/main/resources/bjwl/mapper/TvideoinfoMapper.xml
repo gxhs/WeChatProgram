@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="bjwl.dao.TvideoinfoMapper" >
+  <resultMap id="BaseResultMap" type="bjwl.pojo.Tvideoinfo" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="TypeID" property="typeid" jdbcType="INTEGER" />
+    <result column="videoName" property="videoname" jdbcType="VARCHAR" />
+    <result column="onTime" property="ontime" jdbcType="TIMESTAMP" />
+    <result column="FilePath" property="filepath" jdbcType="VARCHAR" />
+    <result column="fileName" property="filename" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="REAL" />
+    <result column="IFFree" property="iffree" jdbcType="BIT" />
+    <result column="staffName" property="staffname" jdbcType="VARCHAR" />
+    <result column="clickNum" property="clicknum" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, TypeID, videoName, onTime, FilePath, fileName, price, IFFree, staffName, clickNum
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="bjwl.pojo.Example.TvideoinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tvideoinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tvideoinfo
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tvideoinfo
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="bjwl.pojo.Example.TvideoinfoExample" >
+    delete from tvideoinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="bjwl.pojo.Tvideoinfo" >
+    insert into tvideoinfo (ID, TypeID, videoName, 
+      onTime, FilePath, fileName, 
+      price, IFFree, staffName, 
+      clickNum)
+    values (#{id,jdbcType=INTEGER}, #{typeid,jdbcType=INTEGER}, #{videoname,jdbcType=VARCHAR}, 
+      #{ontime,jdbcType=TIMESTAMP}, #{filepath,jdbcType=VARCHAR}, #{filename,jdbcType=VARCHAR}, 
+      #{price,jdbcType=REAL}, #{iffree,jdbcType=BIT}, #{staffname,jdbcType=VARCHAR}, 
+      #{clicknum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="bjwl.pojo.Tvideoinfo" >
+    insert into tvideoinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="typeid != null" >
+        TypeID,
+      </if>
+      <if test="videoname != null" >
+        videoName,
+      </if>
+      <if test="ontime != null" >
+        onTime,
+      </if>
+      <if test="filepath != null" >
+        FilePath,
+      </if>
+      <if test="filename != null" >
+        fileName,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="iffree != null" >
+        IFFree,
+      </if>
+      <if test="staffname != null" >
+        staffName,
+      </if>
+      <if test="clicknum != null" >
+        clickNum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="typeid != null" >
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="videoname != null" >
+        #{videoname,jdbcType=VARCHAR},
+      </if>
+      <if test="ontime != null" >
+        #{ontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filepath != null" >
+        #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null" >
+        #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="iffree != null" >
+        #{iffree,jdbcType=BIT},
+      </if>
+      <if test="staffname != null" >
+        #{staffname,jdbcType=VARCHAR},
+      </if>
+      <if test="clicknum != null" >
+        #{clicknum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="bjwl.pojo.Example.TvideoinfoExample" resultType="java.lang.Integer" >
+    select count(*) from tvideoinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tvideoinfo
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.typeid != null" >
+        TypeID = #{record.typeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.videoname != null" >
+        videoName = #{record.videoname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ontime != null" >
+        onTime = #{record.ontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.filepath != null" >
+        FilePath = #{record.filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filename != null" >
+        fileName = #{record.filename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=REAL},
+      </if>
+      <if test="record.iffree != null" >
+        IFFree = #{record.iffree,jdbcType=BIT},
+      </if>
+      <if test="record.staffname != null" >
+        staffName = #{record.staffname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clicknum != null" >
+        clickNum = #{record.clicknum,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tvideoinfo
+    set ID = #{record.id,jdbcType=INTEGER},
+      TypeID = #{record.typeid,jdbcType=INTEGER},
+      videoName = #{record.videoname,jdbcType=VARCHAR},
+      onTime = #{record.ontime,jdbcType=TIMESTAMP},
+      FilePath = #{record.filepath,jdbcType=VARCHAR},
+      fileName = #{record.filename,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=REAL},
+      IFFree = #{record.iffree,jdbcType=BIT},
+      staffName = #{record.staffname,jdbcType=VARCHAR},
+      clickNum = #{record.clicknum,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="bjwl.pojo.Tvideoinfo" >
+    update tvideoinfo
+    <set >
+      <if test="typeid != null" >
+        TypeID = #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="videoname != null" >
+        videoName = #{videoname,jdbcType=VARCHAR},
+      </if>
+      <if test="ontime != null" >
+        onTime = #{ontime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filepath != null" >
+        FilePath = #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null" >
+        fileName = #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=REAL},
+      </if>
+      <if test="iffree != null" >
+        IFFree = #{iffree,jdbcType=BIT},
+      </if>
+      <if test="staffname != null" >
+        staffName = #{staffname,jdbcType=VARCHAR},
+      </if>
+      <if test="clicknum != null" >
+        clickNum = #{clicknum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="bjwl.pojo.Tvideoinfo" >
+    update tvideoinfo
+    set TypeID = #{typeid,jdbcType=INTEGER},
+      videoName = #{videoname,jdbcType=VARCHAR},
+      onTime = #{ontime,jdbcType=TIMESTAMP},
+      FilePath = #{filepath,jdbcType=VARCHAR},
+      fileName = #{filename,jdbcType=VARCHAR},
+      price = #{price,jdbcType=REAL},
+      IFFree = #{iffree,jdbcType=BIT},
+      staffName = #{staffname,jdbcType=VARCHAR},
+      clickNum = #{clicknum,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

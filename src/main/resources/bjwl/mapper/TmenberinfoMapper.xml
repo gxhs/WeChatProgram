@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="bjwl.dao.TmenberinfoMapper" >
+  <resultMap id="BaseResultMap" type="bjwl.pojo.Tmenberinfo" >
+    <id column="memID" property="memid" jdbcType="INTEGER" />
+    <result column="memName" property="memname" jdbcType="VARCHAR" />
+    <result column="PhoneNum" property="phonenum" jdbcType="VARCHAR" />
+    <result column="WXNo" property="wxno" jdbcType="VARCHAR" />
+    <result column="RegTM" property="regtm" jdbcType="TIMESTAMP" />
+    <result column="recomID" property="recomid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    memID, memName, PhoneNum, WXNo, RegTM, recomID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="bjwl.pojo.Example.TmenberinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tmenberinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tmenberinfo
+    where memID = #{memid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tmenberinfo
+    where memID = #{memid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="bjwl.pojo.Example.TmenberinfoExample" >
+    delete from tmenberinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="bjwl.pojo.Tmenberinfo" >
+    insert into tmenberinfo (memID, memName, PhoneNum, 
+      WXNo, RegTM, recomID
+      )
+    values (#{memid,jdbcType=INTEGER}, #{memname,jdbcType=VARCHAR}, #{phonenum,jdbcType=VARCHAR}, 
+      #{wxno,jdbcType=VARCHAR}, #{regtm,jdbcType=TIMESTAMP}, #{recomid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="bjwl.pojo.Tmenberinfo" >
+    insert into tmenberinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memid != null" >
+        memID,
+      </if>
+      <if test="memname != null" >
+        memName,
+      </if>
+      <if test="phonenum != null" >
+        PhoneNum,
+      </if>
+      <if test="wxno != null" >
+        WXNo,
+      </if>
+      <if test="regtm != null" >
+        RegTM,
+      </if>
+      <if test="recomid != null" >
+        recomID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memid != null" >
+        #{memid,jdbcType=INTEGER},
+      </if>
+      <if test="memname != null" >
+        #{memname,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null" >
+        #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="wxno != null" >
+        #{wxno,jdbcType=VARCHAR},
+      </if>
+      <if test="regtm != null" >
+        #{regtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recomid != null" >
+        #{recomid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="bjwl.pojo.Example.TmenberinfoExample" resultType="java.lang.Integer" >
+    select count(*) from tmenberinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tmenberinfo
+    <set >
+      <if test="record.memid != null" >
+        memID = #{record.memid,jdbcType=INTEGER},
+      </if>
+      <if test="record.memname != null" >
+        memName = #{record.memname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phonenum != null" >
+        PhoneNum = #{record.phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wxno != null" >
+        WXNo = #{record.wxno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regtm != null" >
+        RegTM = #{record.regtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.recomid != null" >
+        recomID = #{record.recomid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tmenberinfo
+    set memID = #{record.memid,jdbcType=INTEGER},
+      memName = #{record.memname,jdbcType=VARCHAR},
+      PhoneNum = #{record.phonenum,jdbcType=VARCHAR},
+      WXNo = #{record.wxno,jdbcType=VARCHAR},
+      RegTM = #{record.regtm,jdbcType=TIMESTAMP},
+      recomID = #{record.recomid,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="bjwl.pojo.Tmenberinfo" >
+    update tmenberinfo
+    <set >
+      <if test="memname != null" >
+        memName = #{memname,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null" >
+        PhoneNum = #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="wxno != null" >
+        WXNo = #{wxno,jdbcType=VARCHAR},
+      </if>
+      <if test="regtm != null" >
+        RegTM = #{regtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recomid != null" >
+        recomID = #{recomid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where memID = #{memid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="bjwl.pojo.Tmenberinfo" >
+    update tmenberinfo
+    set memName = #{memname,jdbcType=VARCHAR},
+      PhoneNum = #{phonenum,jdbcType=VARCHAR},
+      WXNo = #{wxno,jdbcType=VARCHAR},
+      RegTM = #{regtm,jdbcType=TIMESTAMP},
+      recomID = #{recomid,jdbcType=INTEGER}
+    where memID = #{memid,jdbcType=INTEGER}
+  </update>
+</mapper>

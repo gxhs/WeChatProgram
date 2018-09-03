@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<settings>
+    <setting name="mapUnderscoreToCamelCase" value="true"/>
+    <!--<setting name="maxWait" value="30000"></setting>-->
+    <!--<setting name="maxActive" value="200"/>-->
+    <!--<setting name="maxIdle" value="20"/>-->
+</settings>
+
+    <typeAliases>
+     <package name="gxh.ssm.pojo"></package>
+    </typeAliases>
+</configuration>
