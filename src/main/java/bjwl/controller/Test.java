@@ -11,10 +11,10 @@ public class Test {
 
 
     @ResponseBody
-
     @RequestMapping("/a")
     public String test(){
         System.out.println("hello World!");
-        return new Gson().toJson("hello World!");
+        //return new Gson().toJson("hello World!");
+        return "hello World!";
     }
 }
