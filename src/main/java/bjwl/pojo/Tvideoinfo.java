@@ -3,25 +3,25 @@ package bjwl.pojo;
 import java.util.Date;
 
 public class Tvideoinfo {
-    private Integer id;
+    private Integer id;         //序号
 
-    private Integer typeid;
+    private Integer typeid;     // 类型ID
 
-    private String videoname;
+    private String videoname;       //视频名称
 
-    private Date ontime;
+    private Date ontime;            //上线时间
 
-    private String filepath;
+    private String filepath;        //文件路径
 
-    private String filename;
+    private String filename;        //文件名称
 
-    private Float price;
+    private Float price;            //价格
 
-    private Boolean iffree;
+    private Boolean iffree;         //是否免费
 
-    private String staffname;
+    private String staffname;       //更新人员
 
-    private Integer clicknum;
+    private Integer clicknum;       //点击量
 
     public Integer getId() {
         return id;

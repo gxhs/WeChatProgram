@@ -1,9 +1,9 @@
 package bjwl.pojo;
 
 public class Tvideotype {
-    private Integer typeid;
+    private Integer typeid;         //TYPEID
 
-    private String typename;
+    private String typename;        // 分类名称
 
     public Integer getTypeid() {
         return typeid;

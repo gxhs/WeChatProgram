@@ -5,11 +5,11 @@ import bjwl.pojo.Key.TconceKey;
 import java.util.Date;
 
 public class Tconce extends TconceKey {
-    private Date sendtm;
+    private Date sendtm;    //发放时间
 
-    private Date losetm;
+    private Date losetm;    //失效时间
 
-    private Boolean iflose;
+    private Boolean iflose;     //是否失效
 
     public Date getSendtm() {
         return sendtm;
