@@ -1,11 +1,11 @@
 package bjwl.pojo;
 
 public class Tcommit {
-    private String plid;
+    private String plid; //PLID
 
-    private Integer id;
+    private Integer id;     //序号
 
-    private String plnr;
+    private String plnr;    //评论内容
 
     public String getPlid() {
         return plid;

@@ -3,17 +3,17 @@ package bjwl.pojo;
 import java.util.Date;
 
 public class Tmenberinfo {
-    private Integer memid;
+    private Integer memid;      //MEMID
 
-    private String memname;
+    private String memname;     // 会员内容
 
-    private String phonenum;
+    private String phonenum;    //手机号
 
-    private String wxno;
+    private String wxno;        //微信号
 
-    private Date regtm;
+    private Date regtm;         //注册时间
 
-    private Integer recomid;
+    private Integer recomid;    //推荐人ID
 
     public Integer getMemid() {
         return memid;
