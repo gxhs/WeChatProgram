@@ -1,20 +1,30 @@
 package bjwl.controller;
 /*评论Controller*/
 import bjwl.pojo.Tcommit;
+import bjwl.service.impl.TCommitServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @RequestMapping("/Tcommit")
+@ResponseBody
 @Controller
 public class TcommitController {
+    @Autowired
+    TCommitServiceImpl tCommitService;
+
     /*添加评论*/
     @RequestMapping("/addCommit")
     public void addCommit(Tcommit tcommit){
-
+        tCommitService.insert(tcommit);
     }
     /*查询该视频的评论*/
     @RequestMapping("/selectCommit")
-    public void selectCommit(Integer ID){
-
+    public List<Tcommit> selectCommit(Integer ID){
+        List<Tcommit> tcommitList = tCommitService.selectbyTvideoId(ID);
+        return  tcommitList;
     }
 }

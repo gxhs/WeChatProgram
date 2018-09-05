@@ -17,10 +17,10 @@ public class TvideoInfoServiceImpl implements TvideoInfoService {
     TvideoinfoMapper tvideoinfoMapper;
 
     @Override
-    public List<Tvideoinfo> list() {
+    public List<Tvideoinfo> list(int ID) {
         TvideoinfoExample tvideoinfoExample=new TvideoinfoExample();
         TvideoinfoExample.Criteria criteria =tvideoinfoExample.createCriteria();
-        criteria.andIdIsNotNull();
+        criteria.andIdEqualTo(ID);
         return tvideoinfoMapper.selectByExample(tvideoinfoExample);
     }
 
