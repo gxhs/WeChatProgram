@@ -13,7 +13,8 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
     <!-- service -->
-    <!--<bean id="redPacketService" class="gxh.ssm.service.impl.RedPacketServiceImpl"/>-->
+    <context:component-scan base-package="bjwl.service"></context:component-scan>
+    <!--<bean id="TCollInfoService" class="bjwl.service.impl.TCollInfoServiceImpl"/>-->
     <!--<bean id="userRedPacketServiceImpl" class="gxh.ssm.service.impl.UserRedPacketServiceImpl"/>-->
     <!--<bean id="redisRedPacketService" class="gxh.ssm.service.impl.RedisRedPacketServiceImpl"/>-->
 </beans>
