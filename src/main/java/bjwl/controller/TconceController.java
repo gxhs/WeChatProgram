@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TconceController {
     /*生成优惠卷*/
     @RequestMapping("/addConce")
-    public String addConce(Tconce tconce){
+    public String addConce(){
 
         return "hello,word";
     }

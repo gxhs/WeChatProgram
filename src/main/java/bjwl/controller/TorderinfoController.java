@@ -1,6 +1,7 @@
 package bjwl.controller;
 /*订单信息Controller*/
 import bjwl.pojo.Torderinfo;
+import bjwl.service.TorderInfoService;
 import bjwl.service.impl.TorderInfoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,7 @@ import java.util.List;
 @Controller
 public class TorderinfoController {
     @Autowired
-    TorderInfoServiceImpl torderInfoService;
+    TorderInfoService torderInfoService;
     /*添加订单*/
     @RequestMapping("/addOrder")
     public void addOrder(Torderinfo torderinfo){

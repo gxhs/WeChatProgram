@@ -1,6 +1,7 @@
 package bjwl.controller;
 /*视频分类Controller*/
 import bjwl.pojo.Tvideotype;
+import bjwl.service.TVideoTypeService;
 import bjwl.service.impl.TVideoTypeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,7 @@ import java.util.List;
 @Controller
 public class TvideotypeController {
     @Autowired
-    TVideoTypeServiceImpl tVideoTypeService;
+    TVideoTypeService tVideoTypeService;
     /*查询所有的视频类型*/
     @RequestMapping("/selectVideoType")
     public List<Tvideotype> selectVideoType(){

@@ -1,7 +1,8 @@
 package bjwl.controller;
 /*收藏信息COntroller*/
+
 import bjwl.pojo.Tcollinfo;
-import bjwl.service.impl.TCollInfoServiceImpl;
+import bjwl.service.TCollInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +13,9 @@ import java.util.List;
 @ResponseBody
 @Controller
 public class TcollinfoController {
+
     @Autowired
-    TCollInfoServiceImpl tCollInfoService;
+    TCollInfoService tCollInfoService;
     /*我的收藏*/
     @RequestMapping("/myCollect")
     public List<Tcollinfo> myCollect(Integer memID){

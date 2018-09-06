@@ -1,6 +1,7 @@
 package bjwl.controller;
 /*视频信息Controller*/
 import bjwl.pojo.Tvideoinfo;
+import bjwl.service.TvideoInfoService;
 import bjwl.service.impl.TvideoInfoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,7 @@ import java.util.List;
 @Controller
 public class TvideoinfoController {
     @Autowired
-    TvideoInfoServiceImpl tvideoInfoService;
+    TvideoInfoService tvideoInfoService;
     /*获取视频信息*/
     @RequestMapping("/getVideoInfo")
     public List<Tvideoinfo> getVideoInfo(Integer ID){

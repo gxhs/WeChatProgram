@@ -1,6 +1,7 @@
 package bjwl.controller;
 /*评论Controller*/
 import bjwl.pojo.Tcommit;
+import bjwl.service.TCommitService;
 import bjwl.service.impl.TCommitServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,8 +14,9 @@ import java.util.List;
 @ResponseBody
 @Controller
 public class TcommitController {
+
     @Autowired
-    TCommitServiceImpl tCommitService;
+    TCommitService tCommitService;
 
     /*添加评论*/
     @RequestMapping("/addCommit")

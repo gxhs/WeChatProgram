@@ -1,6 +1,7 @@
 package bjwl.controller;
 /*会员信息Controller */
 import bjwl.pojo.Tmenberinfo;
+import bjwl.service.TmenberInfoService;
 import bjwl.service.impl.TmenberInfoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TmenberinfoController {
 
     @Autowired
-    TmenberInfoServiceImpl tmenberInfoService;
+    TmenberInfoService tmenberInfoService;
     /*添加用户的基本信息,可为空*/
     @RequestMapping("/addMemberInfo")
     public void addMemberInfo(Tmenberinfo tmenberinfo){

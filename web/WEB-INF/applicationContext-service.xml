@@ -14,7 +14,11 @@
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
     <!-- service -->
     <context:component-scan base-package="bjwl.service"></context:component-scan>
-    <!--<bean id="TCollInfoService" class="bjwl.service.impl.TCollInfoServiceImpl"/>-->
-    <!--<bean id="userRedPacketServiceImpl" class="gxh.ssm.service.impl.UserRedPacketServiceImpl"/>-->
-    <!--<bean id="redisRedPacketService" class="gxh.ssm.service.impl.RedisRedPacketServiceImpl"/>-->
+    <!--<bean id="tCollInfoService" class="bjwl.service.impl.TCollInfoServiceImpl"/>-->
+    <!--<bean id="tCommitService" class="bjwl.service.impl.TCommitServiceImpl"/>-->
+    <!--<bean id="tConceService" class="bjwl.service.impl.TConceServiceImpl"/>-->
+    <!--<bean id="tmenberInfoService" class="bjwl.service.impl.TmenberInfoServiceImpl"/>-->
+    <!--<bean id="torderInfoService" class="bjwl.service.impl.TorderInfoServiceImpl"/>-->
+    <!--<bean id="tvideoInfoService" class="bjwl.service.impl.TvideoInfoServiceImpl"/>-->
+    <!--<bean id="tVideoTypeService" class="bjwl.service.impl.TVideoTypeServiceImpl"/>-->
 </beans>
