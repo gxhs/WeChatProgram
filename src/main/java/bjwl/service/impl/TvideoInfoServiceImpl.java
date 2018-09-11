@@ -41,4 +41,8 @@ public class TvideoInfoServiceImpl implements TvideoInfoService {
         criteria.andTypeidEqualTo(typeId);
         return tvideoinfoMapper.selectByExample(tvideoinfoExample);
     }
+    @Override
+    public List<Tvideoinfo> findMovie(String findName) {
+        return tvideoinfoMapper.findMovie(findName);
+    }
 }

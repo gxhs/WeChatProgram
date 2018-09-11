@@ -29,4 +29,6 @@ public interface TvideoinfoMapper {
     int updateByPrimaryKey(Tvideoinfo record);
 
     List<Tvideoinfo> getListAll();
+
+    List<Tvideoinfo> findMovie(String findName);
 }

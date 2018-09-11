@@ -317,4 +317,11 @@
 --    INNER JOIN tcommit b on b.ID=a.ID
    INNER JOIN tvideotype c on c.TypeID=a.ID
   </select>
+
+    <select id="findMovie" parameterType="java.lang.String" resultType="bjwl.pojo.Tvideoinfo" >
+        SELECT * FROM  tvideoinfo a WHERE
+        <if test="videoname !=null">
+            a.videoName LIKE CONCAT(CONCAT('%', #{videoname, jdbcType=VARCHAR}),'%')
+        </if>
+    </select>
 </mapper>

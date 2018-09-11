@@ -61,4 +61,10 @@ public class TvideoinfoController {
         return tvideoinfoList;
     }
 
+    /*搜索视频*/
+    @RequestMapping("/findMovies")
+    public List<Tvideoinfo> findMovies(String findName){
+        return tvideoInfoService.findMovie(findName);
+    }
+
 }
