@@ -1,6 +1,8 @@
 package bjwl.pojo;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Tvideoinfo {
     private Integer id;         //序号
@@ -22,6 +24,36 @@ public class Tvideoinfo {
     private String staffname;       //更新人员
 
     private Integer clicknum;       //点击量
+/* ---------------------------- */
+    private int collectionNummber;
+    private String time;
+    private List<Tcommit> tcommitList;//评论
+    private int collection;//收藏量
+    private String typeName;//类型名字
+
+    public int getCollectionNummber() {
+        return collectionNummber;
+    }
+
+    public void setCollectionNummber(int collectionNummber) {
+        this.collectionNummber = collectionNummber;
+    }
+
+    public int getCollection() {
+        return collection;
+    }
+
+    public void setCollection(int collection) {
+        this.collection = collection;
+    }
+
+    public List<Tcommit> getTcommitList() {
+        return tcommitList;
+    }
+
+    public void setTcommitList(List<Tcommit> tcommitList) {
+        this.tcommitList = tcommitList;
+    }
 
     public Integer getId() {
         return id;
@@ -101,5 +133,13 @@ public class Tvideoinfo {
 
     public void setClicknum(Integer clicknum) {
         this.clicknum = clicknum;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

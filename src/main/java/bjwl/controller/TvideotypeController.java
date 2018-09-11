@@ -3,6 +3,7 @@ package bjwl.controller;
 import bjwl.pojo.Tvideotype;
 import bjwl.service.TVideoTypeService;
 import bjwl.service.impl.TVideoTypeServiceImpl;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,9 @@ public class TvideotypeController {
     @RequestMapping("/selectVideoType")
     public List<Tvideotype> selectVideoType(){
         List<Tvideotype> tvideotypeList = tVideoTypeService.list();
+//        Gson gson=new Gson();
+//        String json=gson.toJson(tvideotypeList);
+//        return json;
         return tvideotypeList;
     }
 }

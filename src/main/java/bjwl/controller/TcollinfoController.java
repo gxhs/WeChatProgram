@@ -24,8 +24,8 @@ public class TcollinfoController {
     }
     /*添加收藏*/
     @RequestMapping("/addCollect")
-    public void addCollect(Tcollinfo tcollinfo){
-    tCollInfoService.insert(tcollinfo);
+    public int addCollect(Tcollinfo tcollinfo){
+        return tCollInfoService.insert(tcollinfo);
     }
     /*查询本视频的收藏人数*/
     @RequestMapping("/selectCollectNumber")
@@ -33,5 +33,4 @@ public class TcollinfoController {
        int num =  tCollInfoService.countByVideoId(ID);
        return num;
     }
-
 }

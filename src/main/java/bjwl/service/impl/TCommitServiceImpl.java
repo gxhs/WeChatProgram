@@ -2,6 +2,7 @@ package bjwl.service.impl;
 
 
 import bjwl.dao.TcommitMapper;
+import bjwl.pojo.Example.TcollinfoExample;
 import bjwl.pojo.Example.TcommitExample;
 import bjwl.pojo.Tcommit;
 import bjwl.service.TCommitService;
@@ -17,8 +18,8 @@ public class TCommitServiceImpl implements TCommitService {
     TcommitMapper tcommitMapper;
 
     @Override
-    public void insert(Tcommit tcommit) {
-        tcommitMapper.insert(tcommit);
+    public int insert(Tcommit tcommit) {
+       return tcommitMapper.insert(tcommit);
     }
 
     @Override
@@ -27,5 +28,13 @@ public class TCommitServiceImpl implements TCommitService {
         TcommitExample.Criteria criteria=tcommitExample.createCriteria();
         criteria.andIdEqualTo(id);
         return tcommitMapper.selectByExample(tcommitExample);
+    }
+
+    @Override
+    public int countById(int id) {
+        TcommitExample tcommitExample=new TcommitExample();
+        TcommitExample.Criteria criteria=tcommitExample.createCriteria();
+        criteria.andIdEqualTo(id);
+        return tcommitMapper.countByExample(tcommitExample);
     }
 }

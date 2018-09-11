@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TCollInfoService {
 
-    void insert(Tcollinfo tcollinfo);
+    int insert(Tcollinfo tcollinfo);
     //我的收藏
     List<Tcollinfo> selectVideobyUserId(Integer id);
     //取消收藏

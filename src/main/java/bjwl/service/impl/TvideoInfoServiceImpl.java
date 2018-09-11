@@ -17,7 +17,7 @@ public class TvideoInfoServiceImpl implements TvideoInfoService {
     TvideoinfoMapper tvideoinfoMapper;
 
     @Override
-    public List<Tvideoinfo> list(int ID) {
+    public List<Tvideoinfo> getVideo(int ID) {
         TvideoinfoExample tvideoinfoExample=new TvideoinfoExample();
         TvideoinfoExample.Criteria criteria =tvideoinfoExample.createCriteria();
         criteria.andIdEqualTo(ID);
@@ -29,4 +29,16 @@ public class TvideoInfoServiceImpl implements TvideoInfoService {
         tvideoinfoMapper.updateByPrimaryKeySelective(tvideoinfo);
     }
 
+    @Override
+    public List<Tvideoinfo> getListAll() {
+        return tvideoinfoMapper.getListAll();
+    }
+
+    @Override
+    public List<Tvideoinfo> getVideoByTypeId(int typeId) {
+        TvideoinfoExample tvideoinfoExample=new TvideoinfoExample();
+        TvideoinfoExample.Criteria criteria =tvideoinfoExample.createCriteria();
+        criteria.andTypeidEqualTo(typeId);
+        return tvideoinfoMapper.selectByExample(tvideoinfoExample);
+    }
 }

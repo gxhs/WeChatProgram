@@ -27,4 +27,6 @@ public interface TvideoinfoMapper {
     int updateByPrimaryKeySelective(Tvideoinfo record);
 
     int updateByPrimaryKey(Tvideoinfo record);
+
+    List<Tvideoinfo> getListAll();
 }

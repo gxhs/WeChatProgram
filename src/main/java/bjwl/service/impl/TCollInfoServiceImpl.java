@@ -17,8 +17,8 @@ public class TCollInfoServiceImpl implements TCollInfoService {
     TcollinfoMapper tcollinfoMapper;
 
     @Override
-    public void insert(Tcollinfo tcollinfo){
-        tcollinfoMapper.insert(tcollinfo);
+    public int insert(Tcollinfo tcollinfo){
+       return tcollinfoMapper.insert(tcollinfo);
     }
 
     public List<Tcollinfo> selectVideobyUserId(Integer id) {
