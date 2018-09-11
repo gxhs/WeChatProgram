@@ -1,8 +1,10 @@
 package bjwl.controller;
 /*收藏信息COntroller*/
 
+import bjwl.pojo.Key.TcollinfoKey;
 import bjwl.pojo.Tcollinfo;
 import bjwl.service.TCollInfoService;
+import bjwl.service.TmenberInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +29,10 @@ public class TcollinfoController {
     public int addCollect(Tcollinfo tcollinfo){
         return tCollInfoService.insert(tcollinfo);
     }
+    /*取消收藏*/
+    @RequestMapping("/deleteCollect")
+    public void  deleteCollect(TcollinfoKey tcollinfoKey){ tCollInfoService.delete(tcollinfoKey);}
+
     /*查询本视频的收藏人数*/
     @RequestMapping("/selectCollectNumber")
     public int selectCollectNumber(Integer ID){
