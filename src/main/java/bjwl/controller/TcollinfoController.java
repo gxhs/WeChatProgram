@@ -27,16 +27,22 @@ public class TcollinfoController {
     /*添加收藏*/
     @RequestMapping("/addCollect")
     public int addCollect(Tcollinfo tcollinfo){
-        return tCollInfoService.insert(tcollinfo);
+        tCollInfoService.insert(tcollinfo);
+        int num =  tCollInfoService.countByVideoId(tcollinfo.getId());
+        return num;
     }
     /*取消收藏*/
     @RequestMapping("/deleteCollect")
-    public void  deleteCollect(TcollinfoKey tcollinfoKey){ tCollInfoService.delete(tcollinfoKey);}
+    public int  deleteCollect(TcollinfoKey tcollinfoKey){
+        tCollInfoService.delete(tcollinfoKey);
+        int num =  tCollInfoService.countByVideoId(tcollinfoKey.getId());
+        return num;
+    }
 
     /*查询本视频的收藏人数*/
     @RequestMapping("/selectCollectNumber")
     public int selectCollectNumber(Integer ID){
-       int num =  tCollInfoService.countByVideoId(ID);
-       return num;
+        int num =  tCollInfoService.countByVideoId(ID);
+        return num;
     }
 }
