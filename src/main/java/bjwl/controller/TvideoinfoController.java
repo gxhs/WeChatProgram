@@ -64,7 +64,17 @@ public class TvideoinfoController {
     /*搜索视频*/
     @RequestMapping("/findMovies")
     public List<Tvideoinfo> findMovies(String findName){
-        return tvideoInfoService.findMovie(findName);
+        List<Tvideoinfo> tvideoinfoList1 = tvideoInfoService.findMovie(findName);
+        for (Tvideoinfo tvideoinfo1:tvideoinfoList1){
+            int collection=tCollInfoService.countByVideoId(tvideoinfo1.getId());
+            int commit=tCommitService.countById(tvideoinfo1.getId());
+            String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tvideoinfo1.getOntime());
+            tvideoinfo1.setTime(time);
+            tvideoinfo1.setCollection(collection);
+            tvideoinfo1.setCollectionNummber(commit);
+        }
+        return tvideoinfoList1;
+
     }
 
 }

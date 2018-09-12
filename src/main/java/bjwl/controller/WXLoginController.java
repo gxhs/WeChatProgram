@@ -39,12 +39,14 @@ public class WXLoginController {
     /*添加用户的基本信息,可为空*/
 //    @RequestMapping("/addMemberInfo")
     public void addMemberInfo(Map map){
-        System.out.println("=======================================================");
-        Tmenberinfo tmenberinfo=new Tmenberinfo();
-        tmenberinfo.setWxno((String) map.get("nickName"));
-        tmenberinfo.setRegtm(new Date());
-        tmenberinfo.setMemname((String) map.get("openId"));
-        tmenberInfoService.insert(tmenberinfo);
+        if (tmenberInfoService.selectCountUser((String) map.get("openId"))==0){
+            System.out.println("=======================================================");
+            Tmenberinfo tmenberinfo=new Tmenberinfo();
+            tmenberinfo.setWxno((String) map.get("nickName"));
+            tmenberinfo.setRegtm(new Date());
+            tmenberinfo.setMemname((String) map.get("openId"));
+            tmenberInfoService.insert(tmenberinfo);
+        }
     }
 
     /**

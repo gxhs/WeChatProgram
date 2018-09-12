@@ -225,4 +225,14 @@
       recomID = #{recomid,jdbcType=INTEGER}
     where memID = #{memid,jdbcType=INTEGER}
   </update>
+  <select id="selectCountUser" parameterType="java.lang.String" resultType="java.lang.Integer">
+      select count(*) from tmenberinfo
+       where memName = #{memname,jdbcType=VARCHAR}
+  </select>
+  <select id="selectIdBymemName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tmenberinfo
+    where memName = #{memname,jdbcType=VARCHAR}
+  </select>
 </mapper>

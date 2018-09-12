@@ -21,4 +21,15 @@ public class TmenberInfoServiceImpl implements TmenberInfoService {
     public void updateBynotNull(Tmenberinfo tmenberinfo) {
         tmenberinfoMapper.updateByPrimaryKeySelective(tmenberinfo);
     }
+
+    @Override
+    public int selectCountUser(String memName) {
+        return tmenberinfoMapper.selectCountUser(memName);
+    }
+
+    @Override
+    public Tmenberinfo selectIdBymemName(String memName) {
+        return tmenberinfoMapper.selectIdBymemName(memName);
+    }
+
 }
