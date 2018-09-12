@@ -45,4 +45,9 @@ public class TvideoInfoServiceImpl implements TvideoInfoService {
     public List<Tvideoinfo> findMovie(String findName) {
         return tvideoinfoMapper.findMovie(findName);
     }
+
+    @Override
+    public Tvideoinfo selectByPrimaryKey(Integer id) {
+        return tvideoinfoMapper.selectByPrimaryKey(id);
+    }
 }
