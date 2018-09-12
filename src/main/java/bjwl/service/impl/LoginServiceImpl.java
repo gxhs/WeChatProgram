@@ -31,4 +31,9 @@ public class LoginServiceImpl implements LoginService {
         criteria.andRdSessionEqualTo(re);
         return loginstateMapper.countByExample(loginstateExample);
     }
+
+    @Override
+    public Loginstate selectByKey(String id) {
+        return loginstateMapper.selectByPrimaryKey(id);
+    }
 }

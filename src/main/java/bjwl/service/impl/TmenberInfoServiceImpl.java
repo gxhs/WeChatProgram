@@ -14,7 +14,7 @@ public class TmenberInfoServiceImpl implements TmenberInfoService {
 
     @Override
     public void insert(Tmenberinfo tmenberinfo) {
-        tmenberinfoMapper.insert(tmenberinfo);
+        tmenberinfoMapper.insertSelective(tmenberinfo);
     }
 
     @Override

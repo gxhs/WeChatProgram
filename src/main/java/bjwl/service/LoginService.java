@@ -7,4 +7,5 @@ public interface LoginService {
    int insert(Loginstate loginstate);
    int updateByKey(Loginstate loginstate);
    int selectByResession(String re);
+   Loginstate selectByKey(String id);
 }

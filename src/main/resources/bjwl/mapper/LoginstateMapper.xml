@@ -3,6 +3,7 @@
 <mapper namespace="bjwl.dao.LoginstateMapper" >
   <resultMap id="BaseResultMap" type="bjwl.pojo.Loginstate" >
     <id column="appid" property="appid" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
     <result column="rd_session" property="rdSession" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -64,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    appid, rd_session
+    appid, updateTime, rd_session
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="bjwl.pojo.Example.LoginstateExample" >
     select
@@ -97,14 +98,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="bjwl.pojo.Loginstate" >
-    insert into loginstate (appid, rd_session)
-    values (#{appid,jdbcType=VARCHAR}, #{rdSession,jdbcType=VARCHAR})
+    insert into loginstate (appid, updateTime, rd_session
+      )
+    values (#{appid,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{rdSession,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="bjwl.pojo.Loginstate" >
     insert into loginstate
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="appid != null" >
         appid,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
       </if>
       <if test="rdSession != null" >
         rd_session,
@@ -113,6 +119,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="appid != null" >
         #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
       </if>
       <if test="rdSession != null" >
         #{rdSession,jdbcType=VARCHAR},
@@ -131,6 +140,9 @@
       <if test="record.appid != null" >
         appid = #{record.appid,jdbcType=VARCHAR},
       </if>
+      <if test="record.updatetime != null" >
+        updateTime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.rdSession != null" >
         rd_session = #{record.rdSession,jdbcType=VARCHAR},
       </if>
@@ -142,6 +154,7 @@
   <update id="updateByExample" parameterType="map" >
     update loginstate
     set appid = #{record.appid,jdbcType=VARCHAR},
+      updateTime = #{record.updatetime,jdbcType=TIMESTAMP},
       rd_session = #{record.rdSession,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -150,6 +163,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="bjwl.pojo.Loginstate" >
     update loginstate
     <set >
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
       <if test="rdSession != null" >
         rd_session = #{rdSession,jdbcType=VARCHAR},
       </if>
@@ -158,7 +174,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="bjwl.pojo.Loginstate" >
     update loginstate
-    set rd_session = #{rdSession,jdbcType=VARCHAR}
+    set updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      rd_session = #{rdSession,jdbcType=VARCHAR}
     where appid = #{appid,jdbcType=VARCHAR}
   </update>
 </mapper>

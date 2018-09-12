@@ -1,10 +1,16 @@
 package bjwl.interceptor;
 
+import bjwl.controller.LoginStata;
+import bjwl.controller.WXLoginController;
+import bjwl.pojo.Loginstate;
 import bjwl.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,6 +19,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 
 	@Autowired
 	LoginService loginService;
+	@Autowired
+    LoginStata loginStata;
 
 
 	@Override
@@ -27,21 +35,15 @@ public class LoginInterceptor implements HandlerInterceptor {
 			//如果进行登陆提交，放行
 			return true;
 		}
-		//判断session
-		HttpSession session  = request.getSession();
-		//从session中取出用户身份信息
-		//Integer opNumber = (Integer) session.getAttribute("opNumber");
-        String re_session= (String) session.getAttribute("rd_session");
-//		if(opNumber != null||name!=null){
-//			//身份存在，放行
-//			return true;
-//		}
-//		//执行这里表示用户身份需要认证，跳转登陆页面
-//		request.getRequestDispatcher("/WebContent/index.jsp").forward(request, response);
-//		//return false表示拦截，不向下执行
-//		//return true表示放行
-//		return false;
-        if(loginService.selectByResession(re_session)==0){
+        int sessionId=1;
+        String re_session= request.getParameter("rd_session");
+        System.out.println(re_session+"#########################");
+        if (re_session!=null){
+            sessionId=loginService.selectByResession(re_session);
+        }
+        System.out.println(sessionId);
+        if(sessionId==0){
+            loginStata.getState("false");
             return false;
         }else
             return true;
@@ -64,5 +66,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 		
 		System.out.println("HandlerInterceptor1...afterCompletion");
 	}
+
 
 }

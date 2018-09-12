@@ -14,6 +14,7 @@ import bjwl.service.TorderInfoService;
 import bjwl.util.AesCbcUtil;
 import bjwl.util.HttpRequest;
 
+import com.google.gson.Gson;
 import org.activiti.engine.impl.util.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@ResponseBody
 @RequestMapping("/wXLoginController")
 public class WXLoginController {
 
@@ -30,15 +32,18 @@ public class WXLoginController {
     @Autowired
     LoginService loginService;
 
+
+
+
+
     /*添加用户的基本信息,可为空*/
-    @RequestMapping("/addMemberInfo")
+//    @RequestMapping("/addMemberInfo")
     public void addMemberInfo(Map map){
         System.out.println("=======================================================");
-        Map userInfo= (Map) map.get("userInfo");
         Tmenberinfo tmenberinfo=new Tmenberinfo();
-        tmenberinfo.setWxno((String) userInfo.get("nickName"));
+        tmenberinfo.setWxno((String) map.get("nickName"));
         tmenberinfo.setRegtm(new Date());
-        tmenberinfo.setMemname((String) userInfo.get("openId"));
+        tmenberinfo.setMemname((String) map.get("openId"));
         tmenberInfoService.insert(tmenberinfo);
     }
 
@@ -111,12 +116,16 @@ public class WXLoginController {
                     System.out.println(e);
                 }
                 UUID uuid = UUID.randomUUID();
-                Loginstate loginstate=new Loginstate();
-                loginstate.setAppid((String) userInfoJSON.get("openId"));
-                loginstate.setRdSession(String.valueOf(uuid));
-                loginService.insert(loginstate);
-                //addMemberInfo(userInfo);
-                map.put("rd_session",uuid);
+                String myOpenId=String.valueOf(userInfoJSON.get("openId"));
+        //        if (loginService.selectByKey(myOpenId)==null){
+                        Loginstate loginstate=new Loginstate();
+                        loginstate.setAppid((String) userInfoJSON.get("openId"));
+                        loginstate.setRdSession(String.valueOf(uuid));
+                        loginstate.setUpdatetime(new Date());
+                        loginService.insert(loginstate);
+                        map.put("rd_session",uuid);
+        //        }
+                addMemberInfo(userInfo);
                 map.put("userInfo", userInfo);
             } else {
                 map.put("status", 0);

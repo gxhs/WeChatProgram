@@ -1,7 +1,11 @@
 package bjwl.pojo;
 
+import java.util.Date;
+
 public class Loginstate {
     private String appid;
+
+    private Date updatetime;
 
     private String rdSession;
 
@@ -11,6 +15,14 @@ public class Loginstate {
 
     public void setAppid(String appid) {
         this.appid = appid == null ? null : appid.trim();
+    }
+
+    public Date getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
     }
 
     public String getRdSession() {
