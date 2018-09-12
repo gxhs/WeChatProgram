@@ -12,4 +12,5 @@ public interface TvideoInfoService {
     List<Tvideoinfo> getListAll();
     List<Tvideoinfo> getVideoByTypeId(int typeId);
     List<Tvideoinfo> findMovie(String findName);
+    Tvideoinfo selectByPrimaryKey(Integer id);
 }
