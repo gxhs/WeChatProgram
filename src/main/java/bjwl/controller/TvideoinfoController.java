@@ -49,6 +49,7 @@ public class TvideoinfoController {
             tvideoinfo.setTime(time);
             tvideoinfo.setCollection(collection);
             tvideoinfo.setCollectionNummber(commit);
+            tvideoinfo.setIscollect(0);
         }
         return tvideoinfoList;
      }

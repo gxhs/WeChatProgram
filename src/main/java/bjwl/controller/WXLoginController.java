@@ -1,20 +1,18 @@
 package bjwl.controller;
 
-import java.util.Date;
-import java.util.HashMap;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
-import java.util.Map;
-import java.util.UUID;
-
+import bjwl.pojo.Key.TcollinfoKey;
 import bjwl.pojo.Loginstate;
+import bjwl.pojo.Tcollinfo;
 import bjwl.pojo.Tmenberinfo;
-import bjwl.service.LoginService;
-import bjwl.service.TmenberInfoService;
-import bjwl.service.TorderInfoService;
+import bjwl.pojo.Tvideoinfo;
+import bjwl.service.*;
 import bjwl.util.AesCbcUtil;
 import bjwl.util.HttpRequest;
 
-import com.google.gson.Gson;
 import org.activiti.engine.impl.util.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +29,12 @@ public class WXLoginController {
     TmenberInfoService tmenberInfoService;
     @Autowired
     LoginService loginService;
+    @Autowired
+    TCollInfoService tCollInfoService;
+    @Autowired
+    TvideoInfoService tvideoInfoService;
+    @Autowired
+    TCommitService tCommitService;
 
 
 
@@ -48,6 +52,48 @@ public class WXLoginController {
             tmenberInfoService.insert(tmenberinfo);
         }
     }
+//    public List getUserTconce(String openId){
+//        System.out.println(openId);
+//        int id=tmenberInfoService.selectIdBymemName(openId).getMemid();
+//        System.out.println(id+"---------------------id");
+//        List<Tcollinfo> tcollinfoList=tCollInfoService.selectVideobyUserId(id);
+//        System.out.println(tcollinfoList.toString()+"---------------------toString");
+//        List list=new ArrayList();
+//        try {
+//            for (Tcollinfo tcollinfo:tcollinfoList) {
+//                list.add(tcollinfo.getId());
+//            }
+//        }catch (Exception e){
+//            System.out.println(e);
+//        }
+//        return  list;
+//    }
+
+    @RequestMapping("/getListAll")
+    public List<Tvideoinfo> getVideoListAll(String openId){
+        int memId=tmenberInfoService.selectIdBymemName(openId).getMemid();
+        List<Tvideoinfo> tvideoinfoList = tvideoInfoService.getListAll();
+        for(Tvideoinfo tvideoinfo : tvideoinfoList){
+            String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tvideoinfo.getOntime());
+            int collection=tCollInfoService.countByVideoId(tvideoinfo.getId());
+            int commit=tCommitService.countById(tvideoinfo.getId());
+            int iscollect=iscollect(tvideoinfo.getId(),memId);
+            tvideoinfo.setTime(time);
+            tvideoinfo.setCollection(collection);
+            tvideoinfo.setCollectionNummber(commit);
+            tvideoinfo.setIscollect(iscollect);
+        }
+        return tvideoinfoList;
+    }
+    public int iscollect(Integer id,Integer memId){
+        TcollinfoKey tcollinfoKey=new TcollinfoKey();
+        tcollinfoKey.setMemid(memId);
+        tcollinfoKey.setId(id);
+        if(tCollInfoService.countByKey(tcollinfoKey)==null){
+            return 0;
+        }return 1;
+    }
+
 
     /**
      *     * @Title: decodeUserInfo
@@ -128,6 +174,9 @@ public class WXLoginController {
                         map.put("rd_session",uuid);
         //        }
                 addMemberInfo(userInfo);
+                String openId=String.valueOf(userInfoJSON.get("openId"));
+                System.out.println(openId+"---------------------openid");
+                map.put("newVideos", getVideoListAll(openId));
                 map.put("userInfo", userInfo);
             } else {
                 map.put("status", 0);

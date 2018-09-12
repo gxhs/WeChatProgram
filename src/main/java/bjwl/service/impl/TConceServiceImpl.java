@@ -1,6 +1,7 @@
 package bjwl.service.impl;
 
 import bjwl.dao.TconceMapper;
+import bjwl.pojo.Example.TconceExample;
 import bjwl.pojo.Tconce;
 import bjwl.service.TConceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,10 @@ public class TConceServiceImpl implements TConceService {
 
     @Override
     public List<Tconce> selectTconecByUserID(int UserID) {
-        return null;
+        TconceExample tconceExample=new TconceExample();
+        TconceExample.Criteria criteria=tconceExample.createCriteria();
+        criteria.andMemidEqualTo(UserID);
+        return tconceMapper.selectByExample(tconceExample);
     }
 
     @Override

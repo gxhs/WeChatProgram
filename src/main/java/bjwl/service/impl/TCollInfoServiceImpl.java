@@ -24,13 +24,13 @@ public class TCollInfoServiceImpl implements TCollInfoService {
     public List<Tcollinfo> selectVideobyUserId(Integer id) {
         TcollinfoExample tcollinfoExample=new TcollinfoExample();
         TcollinfoExample.Criteria criteria=tcollinfoExample.createCriteria();
-        criteria.andIdEqualTo(id);
+        criteria.andMemidEqualTo(id);
         return tcollinfoMapper.selectByExample(tcollinfoExample);
     }
 
     @Override
-    public void delete(TcollinfoKey tcollinfoKey) {
-        tcollinfoMapper.deleteByPrimaryKey(tcollinfoKey);
+    public int delete(TcollinfoKey tcollinfoKey) {
+        return tcollinfoMapper.deleteByPrimaryKey(tcollinfoKey);
     }
 
     @Override
@@ -39,5 +39,12 @@ public class TCollInfoServiceImpl implements TCollInfoService {
         TcollinfoExample.Criteria criteria=tcollinfoExample.createCriteria();
         criteria.andIdEqualTo(id);
         return tcollinfoMapper.countByExample(tcollinfoExample);
+    }
+
+    @Override
+    public Tcollinfo countByKey(TcollinfoKey tcollinfoKey) {
+//        TcollinfoExample tcollinfoExample =new TcollinfoExample();
+//        TcollinfoExample.Criteria criteria=tcollinfoExample.createCriteria();
+        return tcollinfoMapper.selectByPrimaryKey(tcollinfoKey);
     }
 }

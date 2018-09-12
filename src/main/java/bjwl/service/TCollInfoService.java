@@ -12,7 +12,9 @@ public interface TCollInfoService {
     //我的收藏
     List<Tcollinfo> selectVideobyUserId(Integer id);
     //取消收藏
-    void delete(TcollinfoKey tcollinfoKey);
+    int delete(TcollinfoKey tcollinfoKey);
     //视频收藏人数
     int countByVideoId(int id);
+    //主键查询
+    Tcollinfo countByKey(TcollinfoKey tcollinfoKey);
 }

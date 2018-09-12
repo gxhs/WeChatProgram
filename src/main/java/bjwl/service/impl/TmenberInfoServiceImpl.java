@@ -1,8 +1,10 @@
 package bjwl.service.impl;
 
 import bjwl.dao.TmenberinfoMapper;
+import bjwl.pojo.Example.TmenberinfoExample;
 import bjwl.pojo.Tmenberinfo;
 import bjwl.service.TmenberInfoService;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,9 @@ public class TmenberInfoServiceImpl implements TmenberInfoService {
 
     @Override
     public Tmenberinfo selectIdBymemName(String memName) {
+        TmenberinfoExample tmenberinfoExample=new TmenberinfoExample();
+        TmenberinfoExample.Criteria criteria =tmenberinfoExample.createCriteria();
+        criteria.andMemnameNotEqualTo(memName);
         return tmenberinfoMapper.selectIdBymemName(memName);
     }
 

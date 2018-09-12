@@ -54,24 +54,29 @@ public class TcollinfoController {
     }
     /*添加收藏*/
     @RequestMapping("/addCollect")
-    public int addCollect(Tcollinfo tcollinfo, @Param("openId") String openId){
+    public String addCollect(Tcollinfo tcollinfo, @Param("openId") String openId){
         System.out.println(tcollinfo.getId());
         System.out.println(openId+"sssssssssssssssssssssss");
         Tmenberinfo tmenberinfo = tmenberInfoService.selectIdBymemName(openId);
         tcollinfo.setMemid(tmenberinfo.getMemid());
         tcollinfo.setColltm(new Date());
-        tCollInfoService.insert(tcollinfo);
-        int num =  tCollInfoService.countByVideoId(tcollinfo.getId());
-        return num;
+        int state=tCollInfoService.insert(tcollinfo);
+        if(state==1){
+            return "success";
+        }
+        return "fail";
     }
     /*取消收藏*/
     @RequestMapping("/deleteCollect")
-    public int  deleteCollect(TcollinfoKey tcollinfoKey,@Param("openId") String openId){
+    public String  deleteCollect(TcollinfoKey tcollinfoKey,@Param("openId") String openId){
         Tmenberinfo tmenberinfo = tmenberInfoService.selectIdBymemName(openId);
         tcollinfoKey.setMemid(tmenberinfo.getMemid());
-        tCollInfoService.delete(tcollinfoKey);
+        int state=tCollInfoService.delete(tcollinfoKey);
         int num =  tCollInfoService.countByVideoId(tcollinfoKey.getId());
-        return num;
+        if(state==1){
+            return "success";
+        }
+        return "fail";
     }
 
     /*查询本视频的收藏人数*/
