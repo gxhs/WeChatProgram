@@ -27,4 +27,7 @@ public interface TmenberinfoMapper {
     int updateByPrimaryKeySelective(Tmenberinfo record);
 
     int updateByPrimaryKey(Tmenberinfo record);
+
+    int selectCountUser(String memName);
+    Tmenberinfo selectIdBymemName(String memName);
 }
