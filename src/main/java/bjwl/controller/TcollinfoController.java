@@ -35,8 +35,9 @@ public class TcollinfoController {
 
     /*我的收藏*/
     @RequestMapping("/myCollect")
-    public List<Tvideoinfo> myCollect(Integer memID){
-        List<Tcollinfo> tcollinfoList = tCollInfoService.selectVideobyUserId(memID);
+    public List<Tvideoinfo> myCollect(@Param("openId") String openId){
+        Tmenberinfo tmenberinfo = tmenberInfoService.selectIdBymemName(openId);
+        List<Tcollinfo> tcollinfoList = tCollInfoService.selectVideobyUserId(tmenberinfo.getMemid());
         List<Tvideoinfo> tvideoinfoList = new ArrayList<>();
         for (Tcollinfo tcollinfo:tcollinfoList){
             tvideoinfoList.add(tvideoInfoService.selectByPrimaryKey(tcollinfo.getId()));
