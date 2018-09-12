@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.List;
 @RequestMapping("/Tcollinfo")
 @ResponseBody
@@ -35,13 +36,16 @@ public class TcollinfoController {
         System.out.println(openId+"sssssssssssssssssssssss");
         Tmenberinfo tmenberinfo = tmenberInfoService.selectIdBymemName(openId);
         tcollinfo.setMemid(tmenberinfo.getMemid());
+        tcollinfo.setColltm(new Date());
         tCollInfoService.insert(tcollinfo);
         int num =  tCollInfoService.countByVideoId(tcollinfo.getId());
         return num;
     }
     /*取消收藏*/
     @RequestMapping("/deleteCollect")
-    public int  deleteCollect(TcollinfoKey tcollinfoKey){
+    public int  deleteCollect(TcollinfoKey tcollinfoKey,@Param("openId") String openId){
+        Tmenberinfo tmenberinfo = tmenberInfoService.selectIdBymemName(openId);
+        tcollinfoKey.setMemid(tmenberinfo.getMemid());
         tCollInfoService.delete(tcollinfoKey);
         int num =  tCollInfoService.countByVideoId(tcollinfoKey.getId());
         return num;
