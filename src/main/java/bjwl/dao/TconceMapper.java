@@ -1,8 +1,7 @@
 package bjwl.dao;
 
-import bjwl.pojo.Tconce;
 import bjwl.pojo.Example.TconceExample;
-import bjwl.pojo.Key.TconceKey;
+import bjwl.pojo.Tconce;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,7 +10,7 @@ public interface TconceMapper {
 
     int deleteByExample(TconceExample example);
 
-    int deleteByPrimaryKey(TconceKey key);
+    int deleteByPrimaryKey(Integer yhjid);
 
     int insert(Tconce record);
 
@@ -19,7 +18,7 @@ public interface TconceMapper {
 
     List<Tconce> selectByExample(TconceExample example);
 
-    Tconce selectByPrimaryKey(TconceKey key);
+    Tconce selectByPrimaryKey(Integer yhjid);
 
     int updateByExampleSelective(@Param("record") Tconce record, @Param("example") TconceExample example);
 

@@ -105,66 +105,6 @@ public class TconceExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andMemidIsNull() {
-            addCriterion("memID is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemidIsNotNull() {
-            addCriterion("memID is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemidEqualTo(Integer value) {
-            addCriterion("memID =", value, "memid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemidNotEqualTo(Integer value) {
-            addCriterion("memID <>", value, "memid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemidGreaterThan(Integer value) {
-            addCriterion("memID >", value, "memid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("memID >=", value, "memid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemidLessThan(Integer value) {
-            addCriterion("memID <", value, "memid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemidLessThanOrEqualTo(Integer value) {
-            addCriterion("memID <=", value, "memid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemidIn(List<Integer> values) {
-            addCriterion("memID in", values, "memid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemidNotIn(List<Integer> values) {
-            addCriterion("memID not in", values, "memid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemidBetween(Integer value1, Integer value2) {
-            addCriterion("memID between", value1, value2, "memid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMemidNotBetween(Integer value1, Integer value2) {
-            addCriterion("memID not between", value1, value2, "memid");
-            return (Criteria) this;
-        }
-
         public Criteria andYhjidIsNull() {
             addCriterion("YHJID is null");
             return (Criteria) this;
@@ -222,6 +162,66 @@ public class TconceExample {
 
         public Criteria andYhjidNotBetween(Integer value1, Integer value2) {
             addCriterion("YHJID not between", value1, value2, "yhjid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemidIsNull() {
+            addCriterion("memID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemidIsNotNull() {
+            addCriterion("memID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemidEqualTo(Integer value) {
+            addCriterion("memID =", value, "memid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemidNotEqualTo(Integer value) {
+            addCriterion("memID <>", value, "memid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemidGreaterThan(Integer value) {
+            addCriterion("memID >", value, "memid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("memID >=", value, "memid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemidLessThan(Integer value) {
+            addCriterion("memID <", value, "memid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemidLessThanOrEqualTo(Integer value) {
+            addCriterion("memID <=", value, "memid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemidIn(List<Integer> values) {
+            addCriterion("memID in", values, "memid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemidNotIn(List<Integer> values) {
+            addCriterion("memID not in", values, "memid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemidBetween(Integer value1, Integer value2) {
+            addCriterion("memID between", value1, value2, "memid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMemidNotBetween(Integer value1, Integer value2) {
+            addCriterion("memID not between", value1, value2, "memid");
             return (Criteria) this;
         }
 
@@ -402,6 +402,126 @@ public class TconceExample {
 
         public Criteria andIfloseNotBetween(Boolean value1, Boolean value2) {
             addCriterion("IFLose not between", value1, value2, "iflose");
+            return (Criteria) this;
+        }
+
+        public Criteria andStateIsNull() {
+            addCriterion("state is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStateIsNotNull() {
+            addCriterion("state is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStateEqualTo(Integer value) {
+            addCriterion("state =", value, "state");
+            return (Criteria) this;
+        }
+
+        public Criteria andStateNotEqualTo(Integer value) {
+            addCriterion("state <>", value, "state");
+            return (Criteria) this;
+        }
+
+        public Criteria andStateGreaterThan(Integer value) {
+            addCriterion("state >", value, "state");
+            return (Criteria) this;
+        }
+
+        public Criteria andStateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("state >=", value, "state");
+            return (Criteria) this;
+        }
+
+        public Criteria andStateLessThan(Integer value) {
+            addCriterion("state <", value, "state");
+            return (Criteria) this;
+        }
+
+        public Criteria andStateLessThanOrEqualTo(Integer value) {
+            addCriterion("state <=", value, "state");
+            return (Criteria) this;
+        }
+
+        public Criteria andStateIn(List<Integer> values) {
+            addCriterion("state in", values, "state");
+            return (Criteria) this;
+        }
+
+        public Criteria andStateNotIn(List<Integer> values) {
+            addCriterion("state not in", values, "state");
+            return (Criteria) this;
+        }
+
+        public Criteria andStateBetween(Integer value1, Integer value2) {
+            addCriterion("state between", value1, value2, "state");
+            return (Criteria) this;
+        }
+
+        public Criteria andStateNotBetween(Integer value1, Integer value2) {
+            addCriterion("state not between", value1, value2, "state");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacevalueIsNull() {
+            addCriterion("FaceValue is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacevalueIsNotNull() {
+            addCriterion("FaceValue is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacevalueEqualTo(Integer value) {
+            addCriterion("FaceValue =", value, "facevalue");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacevalueNotEqualTo(Integer value) {
+            addCriterion("FaceValue <>", value, "facevalue");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacevalueGreaterThan(Integer value) {
+            addCriterion("FaceValue >", value, "facevalue");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacevalueGreaterThanOrEqualTo(Integer value) {
+            addCriterion("FaceValue >=", value, "facevalue");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacevalueLessThan(Integer value) {
+            addCriterion("FaceValue <", value, "facevalue");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacevalueLessThanOrEqualTo(Integer value) {
+            addCriterion("FaceValue <=", value, "facevalue");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacevalueIn(List<Integer> values) {
+            addCriterion("FaceValue in", values, "facevalue");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacevalueNotIn(List<Integer> values) {
+            addCriterion("FaceValue not in", values, "facevalue");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacevalueBetween(Integer value1, Integer value2) {
+            addCriterion("FaceValue between", value1, value2, "facevalue");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacevalueNotBetween(Integer value1, Integer value2) {
+            addCriterion("FaceValue not between", value1, value2, "facevalue");
             return (Criteria) this;
         }
     }

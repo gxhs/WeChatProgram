@@ -7,4 +7,5 @@ import java.util.List;
 public interface TConceService {
 
     List<Tconce> selectTconecByUserID(int UserID);
+    int addTconecByUserID(Tconce tconce);
 }
