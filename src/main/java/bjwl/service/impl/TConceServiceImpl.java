@@ -20,6 +20,7 @@ public class TConceServiceImpl implements TConceService {
         TconceExample tconceExample=new TconceExample();
         TconceExample.Criteria criteria=tconceExample.createCriteria();
         criteria.andMemidEqualTo(UserID);
+        criteria.andStateEqualTo(1);
         return tconceMapper.selectByExample(tconceExample);
     }
 
