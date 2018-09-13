@@ -30,5 +30,5 @@ public interface TvideoinfoMapper {
 
     List<Tvideoinfo> getListAll();
 
-    List<Tvideoinfo> findMovie(String findName);
+    List<Tvideoinfo> findMovie(@Param("videoname") String videoname);
 }

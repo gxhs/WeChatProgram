@@ -3,12 +3,10 @@ package bjwl.controller;
 
 import bjwl.pojo.Key.TcollinfoKey;
 import bjwl.pojo.Tcollinfo;
+import bjwl.pojo.Tconce;
 import bjwl.pojo.Tmenberinfo;
 import bjwl.pojo.Tvideoinfo;
-import bjwl.service.TCollInfoService;
-import bjwl.service.TCommitService;
-import bjwl.service.TmenberInfoService;
-import bjwl.service.TvideoInfoService;
+import bjwl.service.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 @RequestMapping("/Tcollinfo")
@@ -32,6 +31,8 @@ public class TcollinfoController {
     TvideoInfoService tvideoInfoService;
     @Autowired
     TCommitService tCommitService;
+    @Autowired
+    TConceService tConceService;
 
     /*我的收藏*/
     @RequestMapping("/myCollect")
@@ -61,11 +62,33 @@ public class TcollinfoController {
         tcollinfo.setMemid(tmenberinfo.getMemid());
         tcollinfo.setColltm(new Date());
         int state=tCollInfoService.insert(tcollinfo);
+        //System.out.println(state+"**************************state");
         if(state==1){
+               /*添加优惠卷*/
+                Tconce tconce=new Tconce();
+                tconce.setMemid(tmenberinfo.getMemid());
+            //System.out.println(new Date()+"----------oldTime");
+                tconce.setSendtm(new Date());
+                //获取时间加一年或加一月或加一天
+                Date date = new Date();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);//设置起时间
+                //System.out.println("111111111::::"+cal.getTime());
+                //cal.add(Calendar.YEAR, 1);//增加一年
+               //add(Calendar.DATE, n);//增加一天
+                //cal.add(Calendar.DATE, -10);//减10天
+                cal.add(Calendar.MONTH, +1);//增加一个月
+            //System.out.println(cal.getTime()+"-----------newTime");
+                tconce.setLosetm(cal.getTime());
+                tconce.setIflose(false);
+                tconce.setFacevalue(1);
+                tconce.setState(1);
+                tConceService.addTconecByUserID(tconce);
             return "success";
         }
         return "fail";
     }
+
     /*取消收藏*/
     @RequestMapping("/deleteCollect")
     public String  deleteCollect(TcollinfoKey tcollinfoKey,@Param("openId") String openId){

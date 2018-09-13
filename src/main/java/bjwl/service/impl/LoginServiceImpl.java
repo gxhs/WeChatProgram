@@ -7,6 +7,8 @@ import bjwl.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LoginServiceImpl implements LoginService {
 
@@ -35,5 +37,13 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Loginstate selectByKey(String id) {
         return loginstateMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Loginstate> selectOpenIdByRe(String re) {
+        LoginstateExample loginstateExample=new LoginstateExample();
+        LoginstateExample.Criteria criteria=loginstateExample.createCriteria();
+        criteria.andRdSessionEqualTo(re);
+        return  loginstateMapper.selectByExample(loginstateExample);
     }
 }
