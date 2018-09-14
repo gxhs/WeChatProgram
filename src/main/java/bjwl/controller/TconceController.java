@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/Tconce")
 @ResponseBody
@@ -35,9 +37,18 @@ public class TconceController {
     }
     /*查看用户的优惠卷*/
     @RequestMapping("/selectConce")
-    public List<Tconce> selectConce(@Param("openId") String openId){
+    public Map selectConce(@Param("openId") String openId){
+        Map map=new HashMap();
+        System.out.println(openId+"===================");
         Tmenberinfo tmenberinfo = tmenberInfoService.selectIdBymemName(openId);
         List<Tconce> tconceList = tConceService.selectTconecByUserID(tmenberinfo.getMemid());
-        return tconceList;
+        int number=tconceList.size();
+        if (0==number){
+            map.put("number","zero");
+            return map;
+        }else {
+        System.out.println(number+"nubmer==========================");
+        map.put("number",number);
+        return map;}
     }
 }

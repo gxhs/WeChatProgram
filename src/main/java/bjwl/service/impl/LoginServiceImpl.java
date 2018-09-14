@@ -7,7 +7,9 @@ import bjwl.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -45,5 +47,12 @@ public class LoginServiceImpl implements LoginService {
         LoginstateExample.Criteria criteria=loginstateExample.createCriteria();
         criteria.andRdSessionEqualTo(re);
         return  loginstateMapper.selectByExample(loginstateExample);
+    }
+
+    @Override
+    public Map getState() {
+        Map map=new HashMap();
+        map.put("LoginState",false);
+        return map;
     }
 }

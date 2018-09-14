@@ -73,6 +73,11 @@ public class TvideoinfoController {
     public List<Tvideoinfo> getVideoByTypeId(int typeId){
         System.out.println("-------------------------------视频分类id"+typeId);
         List<Tvideoinfo> tvideoinfoList = tvideoInfoService.getVideoByTypeId(typeId);
+        for(Tvideoinfo tvideoinfo : tvideoinfoList){
+            String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tvideoinfo.getOntime());
+            System.out.println(time+"]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]");
+            tvideoinfo.setTime(time);
+        }
         return tvideoinfoList;
     }
 

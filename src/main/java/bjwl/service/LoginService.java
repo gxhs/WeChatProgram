@@ -3,6 +3,7 @@ package bjwl.service;
 import bjwl.pojo.Loginstate;
 
 import java.util.List;
+import java.util.Map;
 
 public interface LoginService {
 
@@ -11,4 +12,5 @@ public interface LoginService {
    int selectByResession(String re);
    Loginstate selectByKey(String id);
    List<Loginstate> selectOpenIdByRe(String re);
+   Map getState();
 }

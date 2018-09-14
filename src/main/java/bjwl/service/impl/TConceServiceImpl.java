@@ -21,6 +21,7 @@ public class TConceServiceImpl implements TConceService {
         TconceExample.Criteria criteria=tconceExample.createCriteria();
         criteria.andMemidEqualTo(UserID);
         criteria.andStateEqualTo(1);
+        criteria.andIfloseEqualTo(false);
         return tconceMapper.selectByExample(tconceExample);
     }
 

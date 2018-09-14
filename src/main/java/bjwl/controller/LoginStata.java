@@ -8,15 +8,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("")
+@RequestMapping("/login")
 public class LoginStata {
 
-    @RequestMapping("")
+    @RequestMapping("/state")
     @ResponseBody
-    public String getState(String state){
-        System.out.println("================================");
+    public String getState(){
+        System.out.println("==========================+++++++++++++++++++======");
 //        Map map = new HashMap();
 //        map.put("state",state);
-        return state;
+        return "false";
     }
 }

@@ -14,6 +14,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
 
 public class LoginInterceptor implements HandlerInterceptor {
 
@@ -43,7 +44,9 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
         System.out.println(sessionId);
         if(sessionId==0){
-            loginStata.getState("false");
+//			response.sendRedirect("?state=mihao");
+			PrintWriter out = response.getWriter();
+			out.write("false");
             return false;
         }else
             return true;
