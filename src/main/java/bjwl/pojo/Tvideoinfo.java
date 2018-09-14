@@ -30,7 +30,7 @@ public class Tvideoinfo {
     private List<Tcommit> tcommitList;//评论
     private int collection;//收藏量
     private String typeName;//类型名字
-    private int iscollect;
+    private int iscollect;//是否收藏
 
     public int getIscollect() {
         return iscollect;

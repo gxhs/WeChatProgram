@@ -70,13 +70,28 @@ public class TvideoinfoController {
 
     /*根据分类获取视频信息*/
     @RequestMapping("/getVideoByTypeId")
-    public List<Tvideoinfo> getVideoByTypeId(int typeId){
+    public List<Tvideoinfo> getVideoByTypeId(HttpServletRequest request,int typeId){
+        String re_session= request.getParameter("rd_session");
         System.out.println("-------------------------------视频分类id"+typeId);
         List<Tvideoinfo> tvideoinfoList = tvideoInfoService.getVideoByTypeId(typeId);
         for(Tvideoinfo tvideoinfo : tvideoinfoList){
             String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tvideoinfo.getOntime());
-            System.out.println(time+"]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]");
+            int collection=tCollInfoService.countByVideoId(tvideoinfo.getId());
+            int commit=tCommitService.countById(tvideoinfo.getId());
+            if (re_session!=null){
+                String openid=loginService.selectOpenIdByRe(re_session).get(0).getAppid();
+                int memId=tmenberInfoService.selectIdBymemName(openid).getMemid();
+                int iscollect=iscollect(tvideoinfo.getId(),memId);
+                System.out.println(iscollect+"--------------------is");
+                tvideoinfo.setIscollect(iscollect);
+            }else {
+                tvideoinfo.setIscollect(0);
+            }
+            System.out.println(commit+collection+"评论+++++++++++++++++++++++++++收藏");
+            System.out.println();
             tvideoinfo.setTime(time);
+            tvideoinfo.setCollection(collection);
+            tvideoinfo.setCollectionNummber(commit);
         }
         return tvideoinfoList;
     }
@@ -95,7 +110,33 @@ public class TvideoinfoController {
             tvideoinfo1.setCollectionNummber(commit);
         }
         return tvideoinfoList1;
+    }
 
+    /*根据分类获取视频信息*/
+    @RequestMapping("/getVideoById")
+    public Tvideoinfo getVideoById(HttpServletRequest request,int videoId){
+        String re_session= request.getParameter("rd_session");
+        System.out.println("-------------------------------视频分类id"+videoId);
+        Tvideoinfo tvideoinfo = tvideoInfoService.selectByPrimaryKey(videoId);
+        String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tvideoinfo.getOntime());
+        int collection=tCollInfoService.countByVideoId(tvideoinfo.getId());
+        int commit=tCommitService.countById(tvideoinfo.getId());
+            if (re_session!=null){
+                String openid=loginService.selectOpenIdByRe(re_session).get(0).getAppid();
+                int memId=tmenberInfoService.selectIdBymemName(openid).getMemid();
+                int iscollect=iscollect(tvideoinfo.getId(),memId);
+                System.out.println(iscollect+"--------------------is");
+                tvideoinfo.setIscollect(iscollect);
+            }else {
+                tvideoinfo.setIscollect(0);
+            }
+            System.out.println(commit+collection+"评论+++++++++++++++++++++++++++收藏");
+            System.out.println();
+            tvideoinfo.setTime(time);
+            tvideoinfo.setCollection(collection);
+            tvideoinfo.setCollectionNummber(commit);
+
+        return tvideoinfo;
     }
 
     public int iscollect(Integer id,Integer memId){
